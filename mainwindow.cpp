@@ -3,6 +3,10 @@
 #include <regex>
 #include<QMessageBox>
 #include<string>
+#include <windows.h>
+#include <iostream>
+#include <chrono>
+#include <thread>
 
 std::regex nickname_regex("[a-zA-Z0-9_]{1,10}");
 
@@ -36,22 +40,19 @@ void MainWindow::on_GoToGameButton_clicked()
     if(!is_valid_nickname(playername)){
         QMessageBox::warning(this,"Invalid","Playername is incorrect");
     } else {
-        ui->stackedWidget->setCurrentIndex(3);
+        //
+        hide();
+        gameWindow = new GameWindow(this,playername);
+        gameWindow->show();
+
     }
 
 }
 
 
-void MainWindow::on_SkipButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(4);
-}
 
 
-void MainWindow::on_BackToMenuButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
+
 
 
 

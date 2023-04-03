@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "gamewindow.h"
+#include<string>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -20,14 +21,9 @@ private slots:
 
     void on_GoToGameButton_clicked();
 
-    void on_SkipButton_clicked();
-
-    void on_BackToMenuButton_clicked();
-
-
 private:
     Ui::MainWindow *ui;
-    GameWindow *GameWindow;
+    GameWindow* gameWindow;
 
 };
 #endif // MAINWINDOW_H
