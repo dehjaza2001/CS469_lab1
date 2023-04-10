@@ -4,6 +4,18 @@
 #include <QMainWindow>
 #include<string>
 #include <windows.h>
+#include <QAbstractSocket>
+#include <QDebug>
+#include <QFile>
+#include <QFileDialog>
+#include <QHostAddress>
+#include <QMessageBox>
+#include <QMetaType>
+#include <QString>
+#include <QStandardPaths>
+#include <QTcpSocket>
+#include <QTimer>
+
 namespace Ui {
 class GameWindow;
 }
@@ -17,7 +29,19 @@ public:
     explicit GameWindow(QWidget *parent = nullptr, std::string name = "");
     ~GameWindow();
 
+signals:
+    void newMessage(QString);
+
 private slots:
+    void readSocket();
+    void discardSocket();
+    void displayError(QAbstractSocket::SocketError socketError);
+    void displayMessage(const QString& str);
+    void sendMessage(const QString& str);
+    void setDisabledButton(bool state);
+
+    void startTimeOut();
+
     void on_A_Button_clicked();
 
     void on_B_Button_clicked();
@@ -33,6 +57,7 @@ private slots:
 private:
     Ui::GameWindow *ui;
     QString name;
+
 };
 
 #endif // GAMEWINDOW_H
