@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include "gamewindow.h"
-#include<string>
-#include <QAbstractSocket>
+#include <string>
+// #include <QAbstractSocket>
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
@@ -13,13 +13,16 @@
 #include <QMetaType>
 #include <QString>
 #include <QStandardPaths>
-#include <QTcpSocket>
+// #include <QTcpSocket>
 #include <QTimer>
 #include "bartimer.h"
-#include<QCoreApplication>
+#include <QCoreApplication>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui
+{
+    class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -29,7 +32,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
- signals :
+signals:
     void newMessage(QString);
     void newQuestion(QString);
     void newStatus(QString);
@@ -37,15 +40,14 @@ public:
 private slots:
     void setDisabledButton(bool state);
     void startNewRound();
-    void sendMessage(const QString& str, const QString& fileType);
-    void readSocket();
-    void discardSocket();
-    void displayError(QAbstractSocket::SocketError socketError);
-    void displayMessage(const QString& str);
-    void displayQuestion(const QString& str);
-    void displayStatus(const QString& str);
+    void sendMessage(const QString &str, const QString &fileType);
+    //    void readSocket();
+    //    void discardSocket();
+    //    void displayError(QAbstractSocket::SocketError socketError);
+    void displayMessage(const QString &str);
+    void displayQuestion(const QString &str);
+    void displayStatus(const QString &str);
     void waitForQuestion();
-
 
     void on_A_Button_clicked();
 
@@ -73,9 +75,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    BarTimer * barTimer;
-    GameWindow* gameWindow;
-    QTcpSocket* socket;
+    BarTimer *barTimer;
+    GameWindow *gameWindow;
+    //    QTcpSocket* socket;
     QString name;
     bool isDead;
     int answeredQuestion;

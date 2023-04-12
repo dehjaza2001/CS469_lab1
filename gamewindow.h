@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include<string>
-#include <windows.h>
+//#include <windows.h>
 #include <QAbstractSocket>
 #include <QDebug>
 #include <QFile>
