@@ -34,6 +34,7 @@ public:
     void newQuestion(QString);
     void newStatus(QString);
 
+
 private slots:
     void setDisabledButton(bool state);
     void startNewRound();

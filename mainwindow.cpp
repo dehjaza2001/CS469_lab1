@@ -80,9 +80,11 @@ void MainWindow::readSocket()
                 QString cons = message.split(";")[0];
                 if(cons == "OK"){
                     QString order = message.split(";")[1];
+                    int num = message.split(";")[2].toInt();
                     ui->stackedWidget->setCurrentIndex(2);
                     this->name = ui->NameInput->text();
                     ui->PlayerOrder->setText(order);
+                    ui->ques->setText(QString("There are %1 questions in this set").arg(num));
                     qDebug() << message << " " << fileType;
                 } else {
                     QMessageBox::warning(this,"Invalid", "Name already taken, please try again");
